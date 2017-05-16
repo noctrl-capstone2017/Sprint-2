@@ -1,25 +1,65 @@
 <!-- Robert Herrera -->
 <p id="notice"><%= notice %></p>
 
-<!-- page header -->
-	<div class="page-header vertical-align">
+<div class="container">
+	<div class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 content-col">
+
+		<!-- page header -->
+		<div class="page-header vertical-align">
 			<div class="col-xs-11">
-				<h2>Super Dashboard<small> - manage schools at TPTE</small></h2><!-- Dynamically fills in with school id -->
+				<h2>Super Dashboard<small> - create and manage schools using super powers</small></h2><!-- Dynamically fills in with school id -->
 			</div>
 			<div class="col-xs-1 center-block">
-				<div class="header-sq i-plum" title="Bianca17">
-					<span class="fa fa-apple fa-3x teacher-icon"></span>
+				<div class="header-sq i-red" title="Prof Bill is Super User">
+					<span class="fa fa-flash fa-3x teacher-icon"></span>
 				</div>
 			</div>
-		</div>
-<!--End page header-->
-<tbody>
-	 <form action="/updateFocus" method="post">
-			<select required>
+		</div><!--End page header-->
+
+
+		<!-- school focus spinner -->
+		<div class="row first-content-row">
+			<form class="form-horizontal">
+				<div class="row vertical-align">
+					<div class="form-group">
+						<label class="control-label col-xs-5" for="selectSch">Super focus school:</label>
+						<div class="col-xs-7">
+							
+
+	<form action="/updateFocus" method="post">
+		<select  class="form-control" id="selectSch">
 				<% @schools.each do |school| %>
 					<option value="<%= school.full_name %>"><%= school.full_name %></option>
 		   		<% end %>
 			</select> 
-	   <input type="submit" value="Change Focus School">
-	</form>
-</tbody>
+				   	<div class="row">
+					<div class="col-xs-4 text-center">
+						<button type="submit" class="btn btn-md btn-success">Change focus school</button>
+					</div>   <!-- col -->
+				</div>   <!-- row -->
+			</form>
+		</div>
+					
+	</div>   <!-- col-->
+	</div>   <!-- form group-->
+</div>   <!-- row -->
+
+		<!-- action icons -->
+		<div class="row action-icon-row" style="margin-top: 40px;">
+			<div class="col-xs-2 col-xs-offset-1 text-center" title="View/edit schools">
+				<div class ="action-sq i-navy center-block" >
+					<a href="school1.html"><span class="fa fa-home fa-4x action-icon" ></span></a>
+				</div>
+				<p><a href="school1.html"><span class="student-icon-text">All schools</span></a></p>
+			</div> <!-- col -->
+			<div class="col-xs-2 text-center" title="Stats++ for the Super User">
+				<div class ="action-sq i-pink center-block">
+					<a href="super2.html"><span class="fa fa-file-text fa-4x action-icon"></span></a>
+				</div>
+				<p><a href="super2.html"><span class="student-icon-text">Super Report</span></a></p>
+			</div><!-- col -->
+		</div><!-- row -->
+
+	</div><!--End content col-->
+</div><!--End container-->
+<!--End page header-->
