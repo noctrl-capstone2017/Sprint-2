@@ -1,0 +1,105 @@
+<!--Author: Michael Loptien and Ricky Perez -->
+<!--This page is used to display each students set of squares -->
+
+<div class="container">
+	<div class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 content-col">
+
+		<!-- page header -->
+		<div class="page-header vertical-align">
+			<div class="col-xs-11">
+				<h2>Student Squares<small> - behavior squares for student Jimmy</small></h2><!-- Dynamically fills in with school id -->
+			</div>
+			<div class="col-xs-1 center-block">
+				<div class="header-sq i-red" title="Jimmy">
+					<span class="fa fa-bicycle fa-3x teacher-icon"></span>
+				</div>
+			</div>
+		</div><!--End page header-->
+
+			<!-- student behavior Squares -->
+			<div class="row squares-row first-content-row">
+
+				<div class="col-xs-2 col-xs-offset-1">
+					<div class="square i-red text-center">
+						<div class="col-xs-12">
+							<h4>AGG</h4>
+						</div>
+					</div><!--End Square-->
+				</div><!--End Col -->
+
+				<div class="col-xs-2">
+					<div class="square i-ltblue text-center">
+						<div class="col-xs-12">
+							<h4>CRY</h4>
+						</div>
+						<div class="col-xs-12">
+							<span class="fa fa-clock-o fa-2x icon-white"></span>
+						</div>
+					</div><!--End Square-->
+				</div><!--End Col -->
+
+				<div class="col-xs-2">
+					<div class="square i-yellow text-center">
+						<div class="col-xs-12">
+							<h4>BIT</h4>
+						</div>
+					</div><!--End Square-->
+				</div><!--End Col-->
+
+				<div class="col-xs-2">
+					<div class="square i-navy text-center">
+						<div class="col-xs-12">
+							<h4>YEL</h4>
+						</div>
+						<div class="col-xs-12">
+							<span class="fa fa-clock-o fa-2x icon-white"></span>
+						</div>
+					</div><!--End Square-->
+				</div><!--End Col -->
+			</div><!--End Row -->
+
+		
+		<!-- add square row-->
+		<div class="row vertical-align add-rm-squares-row">
+			<div class="col-xs-1 col-xs-offset-1 text-right">
+				<span class="fa fa-plus" style="color: green;"></span>
+			</div>
+			<div class="col-xs-2 text-left">
+				<label for="addSquare"><h4>Add Square: </h4></label>
+			</div>
+			<div class="form-group col-xs-2">
+				<select class="form-control" id="addStud">
+					<option>HG - hg description</option>
+					<option>IT - it description</option>
+					<option>JM - jm description</option>
+					<option>UF - uf description</option>
+				</select>
+			</div>
+			<div class="col-xs-2 text-center">
+				<button type="submit" class="btn btn-success">Add Square</button>
+			</div>
+		</div><!--End row -->
+
+		<!-- remove square row-->
+		<div class="row vertical-align add-rm-squares-row">
+			<div class="col-xs-1 col-xs-offset-1 text-right">
+				<span class="fa fa-minus" style="color: red;"></span>
+			</div>
+			<div class="col-xs-2 text-left">
+				<label for="removeSquare"><h4>Remove Square: </h4></label>
+			</div>
+			<div class="form-group col-xs-2">
+				<select class="form-control" id="addStud">
+					<option>AGG - aggressive behavior</option>
+					<option>BIT - biting</option>
+					<option>CRY - intermittent crying</option>
+					<option>YEL - yell and more</option>
+				</select>
+			</div>
+			<div class="col-xs-2 text-center">
+				<button type="submit" class="btn btn-danger">Remove Square</button>
+			</div>
+		</div><!--End row -->
+
+	</div><!--End content col-->
+</div><!--End container-->

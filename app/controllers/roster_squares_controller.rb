@@ -19,13 +19,19 @@ class RosterSquaresController < ApplicationController
 
   # GET /roster_squares/1/edit
   def edit
+    @roster_squares = RosterSquare.all
+    @students = Student.find_by_id(params[:id]) 
+    @square = Square.find_by_id(params[:id])
+    @squares = Square.all
   end
-
+  
   # POST /roster_squares
   # POST /roster_squares.json
   def create
     @roster_square = RosterSquare.new(roster_square_params)
-
+    @students = Student.find_by_id(params[:id])
+    @squares = Square.all
+    @square = Square.find_by_id(params[:id])
     respond_to do |format|
       if @roster_square.save
         format.html { redirect_to @roster_square, notice: 'Roster square was successfully created.' }
@@ -70,5 +76,10 @@ class RosterSquaresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def roster_square_params
       params.require(:roster_square).permit(:square_id, :student_id)
+    end
+    
+    def set_square
+      @set_square = params[:roster_square]
+      @squareName = Square.find(roster_square.square_id)
     end
 end
