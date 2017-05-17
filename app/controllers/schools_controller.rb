@@ -19,6 +19,7 @@ class SchoolsController < ApplicationController
 
   # GET /schools/1/edit
   def edit
+     @current_teacher = current_teacher
   end
 
   # RH

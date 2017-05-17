@@ -21,9 +21,14 @@
 		<ul class="nav navbar-nav ">
 			<% if logged_in? %>
 				<li><a href="help1.html" title="Help!"><span class="fa fa-question-circle"></span> Help</a></li>
-				<li><a href="#"><span class="fa fa-superpowers"></span> Super</a></li>
 				
 				<!-- Note from Carolyn C: Navbar Icons mixed with Ruby on Rails: Source:http://stackoverflow.com/questions/4837824/can-i-use-a-link-to-to-generate-a-link-with-a-span-inside -->
+				<li><%= link_to super_path :class =>"navIcon" do %>
+  				<span class="fa fa-superpowers"></span>
+  				Super
+				<% end %>
+				</li>
+				
 				<li><%= link_to admin_path :class =>"navIcon" do %>
   				<span class="fa fa-font"></span>
   				Admin
