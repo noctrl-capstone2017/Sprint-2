@@ -147,6 +147,7 @@ class TeachersController < ApplicationController
    # make list of all schools available here so I can query them and set the super users schools attr 
    def super
     @schools = School.all
+    @teacher = Teacher.find(params[:id])
    end
    #Robert Herrera
    # POST /super
@@ -154,6 +155,7 @@ class TeachersController < ApplicationController
     teacher = Teacher.find(1)
     schoolName = params[full_name]
     teacher.full_name = schoolName
+    print teacher
 
   end
 
@@ -178,7 +180,7 @@ class TeachersController < ApplicationController
       end
     end
     
-    # Switching the focus school 
+    #Switching the focus school 
     def focus_school_params 
       params.require(:full_name).permit(:school_id)
     end 
