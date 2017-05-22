@@ -1,12 +1,31 @@
 Rails.application.routes.draw do
+  get 'graph/main'
+
+  get 'graph/example'
+
+  get 'graph/random'
+
+  get 'graph/todo'
+
+  get 'graph/other'
+
   root 'login_session#new'
 
-  #get 'teachers/:id/password' => 'teachers#password'
   get "/home" , to: 'teachers#home'
   get "/analysis", to: 'teachers#analysis'
   get 'static_pages/help'
   
+  #Might still be used 
+  #get "sessions/end",to:'sessions#end_session'
+  #get "sessions/:id/end",to:'sessions#end_session'
+  
+  #route to end session page
+  post 'sessions/:id/end_session' => 'sessions#end_session', as: :end_session
   get "sessions/end",to:'sessions#end_session'
+  
+
+  #to disguise teachers/id/edit_password as just /password (I know, I know-- but it works!)
+  get "/password", to: 'teachers#edit_password'
   
   #utilized http://stackoverflow.com/questions/25490308/ruby-on-rails-two-different-edit-pages-and-forms-how-to for help
   resources :teachers do
@@ -56,7 +75,14 @@ Rails.application.routes.draw do
   get    '/admin',           to: 'teachers#admin'
   get    '/super',           to: 'schools#super'
   post   '/super',           to: 'teachers#updateFocus'
+<<<<<<< HEAD
   
+=======
+  get    '/backup',          to: 'schools#backup'
+  get    '/suspend',         to: 'schools#suspend'  
+  get    '/restore',        to: 'schools#restore'   
+   
+>>>>>>> 7dbcd4df47dda1bbac22f65a80ef7457dde1482d
   get    'help'   => 'static_pages#help'
   
   get    '/session_notes' => 'session_notes#index'
