@@ -151,7 +151,7 @@ class TeachersController < ApplicationController
    #Robert Herrera
    # POST /super
   def updateFocus
-    teacher = Teacher.find(1)
+    teacher = Teacher.find(0)
     schoolName = params[full_name]
     teacher.full_name = schoolName
 

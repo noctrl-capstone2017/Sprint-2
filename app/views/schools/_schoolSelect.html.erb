@@ -1,5 +1,6 @@
 <!-- UX Team. Edited by Robert Herrera -->
-<%= form_for(Teacher.first) do |f| %>
+<%= form_tag do %>
+
 		<div class="row vertical-align">
 			<div class="form-group">
 				<label class="control-label col-xs-5" for="selectSch">Super focus school:</label>
@@ -14,6 +15,6 @@
 		</div>   <!-- row -->
 
   <div class="actions">
-    <%= f.submit %>
+    <%= school.submit %>
   </div>
 <% end %>
