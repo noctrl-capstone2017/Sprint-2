@@ -22,7 +22,7 @@
 		</div>
   	<div class="form-group col-xs-2">
         <%= f.select :square_id, options_for_select(@squares.map {|squares| ["#{squares.screen_name } - #{squares.full_name }", squares.id, {'data-id'=>squares.id}] }), class: "form-control", id: "addStud"%>
-        <%= f.hidden_field :student_id, :value => 1%>
+        <%= f.hidden_field :student_id, :value => @students.id%>
   	</div>
 		<%= f.submit "Add Square", class:"btn btn-success"%>
 	</div>
