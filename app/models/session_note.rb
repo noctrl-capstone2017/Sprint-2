@@ -4,4 +4,12 @@ class SessionNote < ApplicationRecord
     validates :session_id, presence: true
     validates :note, presence: true
     
+    def self.search(search)
+      if search
+        where('note LIKE ?', "%#{search}%")
+      else
+        where(nil)
+      end
+    end
+    
 end

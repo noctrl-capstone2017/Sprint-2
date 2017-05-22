@@ -1,16 +1,18 @@
 class SessionNotesController < ApplicationController
-  #before_action :set_session_note,  only: [:show, :edit, :update, :destroy]
+  before_action :set_session_note,  only: [:show, :edit, :update, :destroy]
 
   # GET /session_notes
   # GET /session_notes.json
   def index
-    @session_note = SessionNote.new
-    @session_notes = SessionNote.paginate(page: params[:page])
+    @session_notes = SessionNote.all
+    #@session_notes = SessionNote.paginate(:per_page => 10, :page => params[:page] )
+    @session_notes = SessionNote.search(params[:search]).paginate(:per_page => 10, :page => params[:page] )
   end
 
   # GET /session_notes/1
   # GET /session_notes/1.json
   def show
+    @session_note = SessionNote.find(params[:id])
   end
 
   # GET /session_notes/new
@@ -63,13 +65,13 @@ class SessionNotesController < ApplicationController
   end
 
   private
-    # # Use callbacks to share common setup or constraints between actions.
-    # def set_session_note
-    #   @session_note = SessionNote.find(params[:id])
-    # end
+     # Use callbacks to share common setup or constraints between actions.
+     def set_session_note
+       @session_note = SessionNote.find(params[:id])
+     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def session_note_params
-      params.require(:session_note).permit(:note, :session_id, :created_at)
+      params.require(:session_note).permit(:note, :session_id)
     end
 end

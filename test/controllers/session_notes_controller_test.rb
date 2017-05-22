@@ -17,7 +17,7 @@ class SessionNotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create session_note" do
     assert_difference('SessionNote.count') do
-      post session_notes_url, params: { session_note: { created_at: @session_note.created_at, note: @session_note.note, session_id: @session_note.session_id } }
+      post session_notes_url, params: { session_note: { note: "This is the test note", session_id: 1 } }
     end
 
     assert_redirected_to session_note_url(SessionNote.last)

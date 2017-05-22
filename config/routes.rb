@@ -56,12 +56,10 @@ Rails.application.routes.draw do
   get    '/admin',           to: 'teachers#admin'
   get    '/super',           to: 'schools#super'
   post   '/super',           to: 'teachers#updateFocus'
-
-  
   
   get    'help'   => 'static_pages#help'
   
-  get    'notes' => 'session_notes#index'
-
+  get    '/session_notes' => 'session_notes#index'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
