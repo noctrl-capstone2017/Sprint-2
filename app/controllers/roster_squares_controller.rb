@@ -24,6 +24,7 @@ class RosterSquaresController < ApplicationController
 
   # GET /roster_squares/1/edit
   def edit
+    @roster_square = RosterSquare.new
     @roster_squares = RosterSquare.all
     @students = Student.find_by_id(params[:id]) 
     @square = Square.find_by_id(params[:id])
