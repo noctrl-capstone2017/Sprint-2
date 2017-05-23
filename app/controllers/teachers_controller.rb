@@ -177,7 +177,7 @@ class TeachersController < ApplicationController
     def teacher_params
       params.require(:teacher).permit(:user_name, :last_login,
       :full_name, :screen_name, :icon, :color, :email, :description, :powers, 
-      :school_id, :password, :password_confirmation)
+      :school_id, :password, :password_confirmation, :is_suspended)
     end
     
     #Can only access teachers and info from the same school
