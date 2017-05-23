@@ -15,7 +15,7 @@
       <!--End page header-->
       <div class="row">
          <div class="col-xs-10 col-xs-offset-1">
-          <!--  <h4>Session Duration: </h4>-->
+             <h4>Session Duration:<%=calculateDuration%> </h4>
             <br>
             <h4>Quick Summary:</h4>
             <table class="table table-striped table-hover table-responsive">
@@ -35,13 +35,13 @@
                      </td>
                      <td>
                         <% if square.tracking_type == 2 %> <!-- Frequency -->
-                           <label>Frequency</label>
+                        <label>Frequency</label>
                         <% end %>
                         <% if square.tracking_type == 3 %> <!--Interval -->
-                           <label>Interval</label>
+                        <label>Interval</label>
                         <% end %>
                         <% if square.tracking_type == 1 %> <!-- Duration-->
-                           <label>Duration</label>
+                        <label>Duration</label>
                         <% end %>
                      </td>
                   </tr>
