@@ -36,9 +36,11 @@
                      <td>
                         <% if square.tracking_type == 2 %> <!-- Frequency -->
                         <label>Frequency</label>
+                        <td><%=isFrequency%></td>
                         <% end %>
                         <% if square.tracking_type == 3 %> <!--Interval -->
                         <label>Interval</label>
+                        <td><%=isInterval%></td>
                         <% end %>
                         <% if square.tracking_type == 1 %> <!-- Duration-->
                         <label>Duration</label>
