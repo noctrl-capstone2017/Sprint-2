@@ -15,6 +15,7 @@ class SchoolsController < ApplicationController
 
   # Used in the /schools route to display all schools
   def index
+    @current_teacher = current_teacher
     @schools = School.paginate(page: params[:page], :per_page => 10)
   end
 
@@ -26,7 +27,9 @@ class SchoolsController < ApplicationController
   # Used in the Super Dashboard to allow teacher 1 (profbill) to switch focus to any school
   def super
     @schools = School.all
-    @teacher = Teacher.first
+    @schools_id = School.pluck(:id)
+    @schools_name = School.pluck(:full_name)
+    @teacher = @current_teacher
   end
   
   # Used to pass information about which school will be backed up to the /backup page

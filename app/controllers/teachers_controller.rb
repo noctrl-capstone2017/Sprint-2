@@ -175,11 +175,6 @@ class TeachersController < ApplicationController
       end
     end
   end
-   
-  # This method prepares the super view.
-  def super
-    @schools = School.all
-  end
   
    #Robert Herrera
    # POST /super

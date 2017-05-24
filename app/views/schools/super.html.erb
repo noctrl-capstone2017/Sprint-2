@@ -12,9 +12,11 @@
 				</div>
 			</div>
 		</div><!--End page header-->
+		
 <div class="row first-content-row">
 		<!-- Render the school focus spinner using form partial-->
 		 <%= render 'schoolSelect', school: @school %>
+		 
 		<!-- action icons -->
 		<div class="row action-icon-row" style="margin-top: 40px;">
 			<%= link_to schools_path(@schools) do %>
