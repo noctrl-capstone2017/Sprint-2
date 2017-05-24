@@ -1,4 +1,4 @@
-<!-- @author: Matthew O & Alex P -->
+<!-- @author: Matthew O & Alex P  & Debra J-->
 
 <!-- Control the selection and unselection of the student roster -->
 <script>
@@ -15,7 +15,12 @@
 	});
 </script>
 
-
+<!--     flash    -->
+<!-- Meagan Moore -->
+<div class="form-group">		
+	<%= render 'layouts/flash' %>
+</div>
+			
 <!-- page header -->
 <div class="page-header vertical-align">
 	<div class="col-xs-11">
@@ -62,7 +67,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="email">Student:</label>
 				<div class="col-sm-4">
-					<%= select_tag 'student_id', options_from_collection_for_select(@teacher.students, 'id', 'full_name'), {:required => true} %>
+					<%= select_tag 'school_id', options_from_collection_for_select(@teacher.students, 'id', 'full_name') %>
 				</div>
 			</div>
 		</div>

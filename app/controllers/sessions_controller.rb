@@ -7,31 +7,25 @@ class SessionsController < ApplicationController
     @sessions = Session.all
   end
   
-   # Alex P + Matthew O
+  #Alex P + Matthew O
   def end_session
-    #define end session variables needed for View
     @session = Session.find(params[:id])
-    @session.end_time = Time.now
+    @session.start_time = params[:start].to_s
+    @session.end_time = params[:end].to_s
     @session.save
     @student = Student.find(@session.session_student)
     @teacher = Teacher.find(@session.session_teacher)
     @squares = @student.squares
+    @square_type = @squares
+    
   end
 
   # GET /sessions/1
   # GET /sessions/1.json
-  # Alex P + Matthew OS
+  # Alex P + Matthew O
   def show
     @student = Student.find(@session.session_student)
     @teacher = Teacher.find(@session.session_teacher)
-  
-   #if teacher clicks "end session" button redirect to end_session page
-   if params[:end_session]
-    respond_to do |format|
-            format.html { redirect_to @session, notice: 'Session was successfully created.' }
-            format.json { render :end_session, status: :created, location: @session }
-    end
-   end
   end
 
   # GET /sessions/new
