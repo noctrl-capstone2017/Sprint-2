@@ -2,7 +2,6 @@
 class SessionEventsController < ApplicationController
   before_action :set_session_event, only: [:show, :edit, :update, :destroy]
   
-
   # GET /session_events
   # GET /session_events.json
   def index
