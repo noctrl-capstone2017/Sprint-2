@@ -1,29 +1,32 @@
+<!-- Author : Rolando Medrano -->
+
+<!--Issues arrise when i move to JS file. Fix thos issues and move -->
 <script>
 	$(function() {
-	  // contact form animations
-	  $('#newNote').one('click', function() {
-	  	$.get('/session_notes/new', function(data) {
-	    var otherPage = $(data); //Get the other page dom as data
-	    var otherPageForm = $(otherPage).find('#new_session_note'); // find the form
-	    $('#newNoteForm').append(otherPageForm).fadeToggle();// place the form in the current page
-	});
-	
-	$('#newNote').click(function() { // find the form
-	    $('#newNoteForm').fadeToggle();// place the form in the current page
-	});
-	  $(document).mouseup(function (e) {
-	    var container = $("#newNoteForm");
-	    if (!container.is(e.target) // if the target of the click isn't the container...
-	        && container.has(e.target).length === 0) // ... nor a descendant of the container
-	    {
-	        container.fadeOut();
-	    }
-	  });
-	  })
+		// contact form animations
+		$('#newNote').one('click', function() {
+			$.get('/session_notes/new', function(data) {
+				var otherPage = $(data); //Get the other page dom as data
+				var otherPageForm = $(otherPage).find('#new_session_note'); // find the form
+				$('#newNoteForm').append(otherPageForm).fadeToggle();// place the form in the current page
+			});
+			
+			$('#newNote').click(function() { // find the form
+				$('#newNoteForm').fadeToggle();// place the form in the current page
+			});
+			$(document).mouseup(function (e) {
+				var container = $("#newNoteForm");
+				if (!container.is(e.target) // if the target of the click isn't the container...
+				&& container.has(e.target).length === 0) // ... nor a descendant of the container
+				{
+					container.fadeOut();
+				}
+			});
+		})
 	});
 </script>
 
-<!-- page header -->
+<!-------------------page header ----------------->
 <div class="page-header vertical-align">
 	<div class="col-xs-11">
 		<h2>Notes<small> - view all notes</small></h2>
@@ -33,40 +36,33 @@
 			<span class="fa fa-apple fa-3x teacher-icon"></span>
 		</div>
 	</div>
-</div><!--End page header-->
+</div>
+<!------------------End page header--------------->
 
-<!--New Note-->
+<!------------------ New Note Button-------------->
 <div class="row first-content-row">
 	<div class="col-xs-3">
 		<p><%= notice %></p>
     	<div class ="col-sm-offset-1 btn btn-lg btn-success">
-    		<div id = "newNote">New Note</div>
+    	<div id = "newNote">New Note</div>
     	</div>
-    	
-    	<div id="searchBox">
-			<%= form_for session_notes_path, :method => 'get' do %>
-			  <p>
-			    <%= text_field_tag :search, params[:search], placeholder: 'Enter search term...' %>
-			    <%= submit_tag "Search", :name => nil %>
-			  </p>
-			<% end %>
-</div>
 	</div><!--End col-->
 </div><!--End row -->
 
 <!-- This is the note that will be appearing -->
-<div id="newNoteForm">
-  <h1>Add a new Note</h1>  
-</div>
+<div id="newNoteForm"><h1>Add a new Note</h1></div>
 
-<table class="table table-striped table-hover table-responsive teachers-table">
+<%= will_paginate %>
+<table class="table table-striped table-hover table-responsive notes-table">
+	
 	<thead>
 		<tr>
-			<th>Student</th>
+			<th>Session</th>
 			<th>Note</th>
 			<th>Date</th>
 		</tr>
 	</thead>
+	
 	<tbody>
 		<% @session_notes.each do |session_note| %>
 			<tr data-link=<%= edit_session_note_path(session_note.note) %>>
@@ -77,5 +73,6 @@
 			</tr>
 		<% end %>
 	</tbody>
+	
 </table>
 <%= will_paginate %>

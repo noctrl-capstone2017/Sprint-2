@@ -1,29 +1,9 @@
 <h1>New Session Note</h1>
-<!--
-<script>
-	$(function() {
-  
-  // contact form animations
-  $('#newNote').click(function() {
-    $('#newNoteForm').fadeToggle();
-  })
-  $(document).mouseup(function (e) {
-    var container = $("#newNoteForm");
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-        container.fadeOut();
-    }
-  });
-  
-});
-</script>-->
 
 <!-- This is the note that will be appearing -->
 <div id="newNoteForm">
-  <h1>Add a new Note</h1>  
-	<%= form_for @session_note, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-	  <%= f.text_area :note, size: "60x12" %>
+	<%= form_for @session_note, url: {action: "create"} do |f| %>
+	  <%= f.text_area :note %>
 	  <%= number_field(:session_note, :session_id) %>
 	  <%= f.submit "Save" %>
 	<% end %>

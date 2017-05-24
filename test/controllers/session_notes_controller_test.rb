@@ -1,6 +1,10 @@
+# Author: Rolando Medrano
+# Model Testing
+
 require 'test_helper'
 
 class SessionNotesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
     @session_note = session_notes(:one)
   end
@@ -17,9 +21,8 @@ class SessionNotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create session_note" do
     assert_difference('SessionNote.count') do
-      post session_notes_url, params: { session_note: { note: "This is the test note", session_id: 1 } }
+      post session_notes_url, params: { session_note: { note: 'fsdfsdfsdf', session_id: '10' } }
     end
-
     assert_redirected_to session_note_url(SessionNote.last)
   end
 
@@ -41,8 +44,8 @@ class SessionNotesControllerTest < ActionDispatch::IntegrationTest
   test "should destroy session_note" do
     assert_difference('SessionNote.count', -1) do
       delete session_note_url(@session_note)
-    end
+  end
 
-    assert_redirected_to session_notes_url
+  assert_redirected_to session_notes_url
   end
 end
