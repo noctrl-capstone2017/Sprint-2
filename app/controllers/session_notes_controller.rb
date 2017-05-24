@@ -44,7 +44,7 @@ class SessionNotesController < ApplicationController
   def update
     respond_to do |format|
       if @session_note.update(session_note_params)
-        format.html { redirect_to @session_note, notice: 'Session note was successfully updated.' }
+        format.html { redirect_to session_notes_url, notice: 'Session note was successfully updated.' }
         format.json { render :show, status: :ok, location: @session_note }
       else
         format.html { render :edit }
