@@ -57,7 +57,6 @@
 	
 	<thead>
 		<tr>
-			<th>Session</th>
 			<th>Note</th>
 			<th>Date</th>
 		</tr>
@@ -66,7 +65,6 @@
 	<tbody>
 		<% @session_notes.each do |session_note| %>
 			<tr data-link = "<%= edit_session_note_path(session_note) %>">
-				<td><p class="listText"><%= session_note.session_id %></p></td>
 				<td><p class="listText"><%= truncate(session_note.note, :length => 40, :separator => ' ')%></p></td>
 				<td><p class="listText"><%= session_note.created_at %></p></td>
 				<td><p class="listText"><span></span></p></td>
