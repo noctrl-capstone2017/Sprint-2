@@ -1,10 +1,8 @@
 #Authors Alex P, Matthew O, Debra J
 module SessionsHelper
-<<<<<<< HEAD
 
-=======
   #Calculates session duration from start and end times
->>>>>>> a8368ff768e0480c393f6abac1534c67af68f289
+
   def calculateDuration
     @session = Session.find(params[:id])
     start = Time.at(@session.start_time)
