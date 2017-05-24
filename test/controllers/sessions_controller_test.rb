@@ -63,7 +63,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     post end_session_url(@session)
     assert_response :success
   end
-
+  #Authors: Alex P Debra J Matthew O
+  #makes sure session can be edited after logging in
   test "should get edit" do
     log_in_as(@user)
     get edit_session_url(@session)
@@ -77,7 +78,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     patch session_url(@session), params: { session: { end_time: @session.end_time, session_student: @session.session_student, session_teacher: @session.session_teacher, start_time: @session.start_time } }
     assert_redirected_to session_url(@session)
   end
-
+  
+  #Authors: Alex P Debra J Matthew O
+  #makes sure session can be destroyed after logging in
   test "should destroy session" do
     log_in_as(@user)
     assert_difference('Session.count', -1) do

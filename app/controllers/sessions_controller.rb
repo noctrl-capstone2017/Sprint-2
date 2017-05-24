@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     @sessions = Session.all
   end
   
+  #submits info to end session screen and records session end time
   def end_session
     @session = Session.find(params[:id])
     @session.end_time = Time.now
@@ -25,7 +26,6 @@ class SessionsController < ApplicationController
   def show
     @student = Student.find(@session.session_student)
     @teacher = Teacher.find(@session.session_teacher)
-  
     
    if params[:end_session]
     respond_to do |format|
