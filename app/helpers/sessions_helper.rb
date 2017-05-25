@@ -39,10 +39,7 @@ module SessionsHelper
     @student = Student.find(@session.session_student)
     @squares = @student.squares
     @sessionEvent = SessionEvent.where(id: params[:behavior_id])
-    
-    @frequency = SessionEvent.count
-    
-    
+    @frequency = @sessionEvent
     
     return @frequency
   end

@@ -144,12 +144,8 @@ class TeachersController < ApplicationController
   def update
     respond_to do |format|
       if @teacher.update(teacher_params)
-<<<<<<< HEAD
         format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
         format.json { render :show, status: :ok, location: @teacher }
-=======
-        format.html { redirect_to edit_teacher_path(@teacher.id), notice: 'Teacher was successfully updated.' }  
->>>>>>> 658704edd609f39a2495a4c4988e19a733b8e7cc
       else
         format.html { render :edit }
         format.json { render json: @teacher.errors, status: :unprocessable_entity }
