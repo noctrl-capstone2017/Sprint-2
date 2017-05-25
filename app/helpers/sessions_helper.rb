@@ -1,15 +1,15 @@
-#Authors Alex P, Matthew O, Debra J
+# Authors Alexander Pavia + Matthew O + Debra J
 module SessionsHelper
-
-  #Calculates session duration from start and end times
 
   def calculateDuration
     @session = Session.find(params[:id])
-    start = Time.at(@session.start_time)
-    endt = Time.at(@session.end_time)
+    start = @session.start_time
+    endt = @session.end_time
+  
+    #endt= Endt.find(@session.end_time)
+    #duration = @session.end_time - @session.start_time
     duration = endt - start
-    #show duration as minutes
-    duration = Time.at(duration).utc.strftime("%M")
+    duration = Time.at(duration).utc.strftime("%H:%M")
     return duration
   end
   
@@ -21,25 +21,28 @@ module SessionsHelper
     @session = Session.find(params[:id])
     @student = Student.find(@session.session_student)
     @squares = @student.squares
-    
     @sessionEvent = SessionEvent.where(id: params[:behavior_id])
-    
+    answer = "No"
     if  @sessionEvent.length > 0
       
-       answer = "Yes"
+      return answer = "Yes"
     end
+    
     return answer
   end
   
   #display the number of times square was pressed 
   #count where the session_id = the session_id and behavior_sq = behavior_sq
   def isFrequency
-    @session = Session.find(params[:id])
+    
+    @session = Session.last
     @student = Student.find(@session.session_student)
     @squares = @student.squares
     @sessionEvent = SessionEvent.where(id: params[:behavior_id])
     
-    @frequency = @sessionEvent.count(id: @squares.id, behavior_square_id: @squares.id)
+    @frequency = SessionEvent.count
+    
+    
     
     return @frequency
   end
