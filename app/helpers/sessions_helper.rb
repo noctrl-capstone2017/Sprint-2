@@ -9,22 +9,8 @@ module SessionsHelper
     #endt= Endt.find(@session.end_time)
     #duration = @session.end_time - @session.start_time
     duration = endt - start
-<<<<<<< HEAD
     duration = Time.at(duration).utc.strftime("%H:%M")
     return duration
-=======
-   
-   #see if duration is at least a minute, if so format as minutes
-   #else format as seconds
-    if duration >= 60
-        #show duration as minutes
-      durationStr = Time.at(duration).utc.strftime("%M") + " minutes"
-    else
-      durationStr = durationStr = Time.at(duration).utc.strftime("%S") + " seconds"
-    end
-
-    return durationStr
->>>>>>> 44f589ee49e01767666da64318e3bc45c9ccf48d
   end
   
   #If the square tracking type is an interval

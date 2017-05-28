@@ -42,24 +42,9 @@ class TeachersController < ApplicationController
     @students_not_in_roster_but_at_school = @students_not_in_roster_but_at_school.order('screen_name ASC')
     
     if params[:add_student]
-<<<<<<< HEAD
       @teacher.students << Student.find(params[:add_student_id])
     elsif params[:remove_student]
       @teacher.students.delete(Student.find(params[:remove_student_id]))
-=======
-        if params[:add_student_id] != nil
-          if @teacher.powers != "Admin"
-            @teacher.students << Student.find(params[:add_student_id])
-          end
-        end
-        
-    elsif params[:remove_student]
-      if params[:remove_student_id] != nil
-        if @teacher.powers != "Admin"
-          @teacher.students.delete(Student.find(params[:remove_student_id]))
-        end
-      end
->>>>>>> 44f589ee49e01767666da64318e3bc45c9ccf48d
     end
   end
   
@@ -96,15 +81,9 @@ class TeachersController < ApplicationController
     @teacher = current_teacher
   end
   
-<<<<<<< HEAD
   #utilized http://stackoverflow.com/questions/25490308/ruby-on-rails-two-different-edit-pages-and-forms-how-to for help
   # This updates the Teacher's password.
   def update_password
-=======
-  # This changes the Teacher's password.
-  # Used http://stackoverflow.com/questions/25490308/ruby-on-rails-two-different-edit-pages-and-forms-how-to for help
-  def change_password
->>>>>>> 44f589ee49e01767666da64318e3bc45c9ccf48d
     teacher = current_teacher
     if teacher and teacher.authenticate(params[:old_password])
       if params[:password] == params[:password_confirmation]
