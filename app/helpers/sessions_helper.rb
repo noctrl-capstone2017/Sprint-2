@@ -35,13 +35,14 @@ module SessionsHelper
   #count where the session_id = the session_id and behavior_sq = behavior_sq
   def isFrequency
     
-    @session = Session.last
+    @session = Session.find(params[:id])
     @student = Student.find(@session.session_student)
     @squares = @student.squares
-    @sessionEvent = SessionEvent.where(id: params[:behavior_id])
+    #@sessionEvent = SessionEvent.where(id: params[:behavior_id])
     @frequency = @sessionEvent
-    
-    return @frequency
-  end
+    events = SessionEvent.where(session_id: session.id)
+
+    return events
   
+  end
 end
