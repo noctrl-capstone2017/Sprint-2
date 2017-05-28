@@ -42,10 +42,29 @@ class TeachersController < ApplicationController
     @students_not_in_roster_but_at_school = @students_not_in_roster_but_at_school.order('screen_name ASC')
     
     if params[:add_student]
+<<<<<<< HEAD
       @teacher.students << Student.find(params[:add_student_id])
     elsif params[:remove_student]
       @teacher.students.delete(Student.find(params[:remove_student_id]))
+=======
+        if params[:add_student_id] != nil
+          if @teacher.powers != "Admin"
+            @teacher.students << Student.find(params[:add_student_id])
+          end
+        end
+        
+    elsif params[:remove_student]
+      if params[:remove_student_id] != nil
+        if @teacher.powers != "Admin"
+          @teacher.students.delete(Student.find(params[:remove_student_id]))
+        end
+      end
+>>>>>>> 44f589ee49e01767666da64318e3bc45c9ccf48d
     end
+  end
+  
+  def login_settings
+    @teacher = Teacher.find(params[:id])
   end
 
   # GET /teachers/new
@@ -77,11 +96,16 @@ class TeachersController < ApplicationController
     @teacher = current_teacher
   end
   
+<<<<<<< HEAD
   #utilized http://stackoverflow.com/questions/25490308/ruby-on-rails-two-different-edit-pages-and-forms-how-to for help
   # This updates the Teacher's password.
   def update_password
+=======
+  # This changes the Teacher's password.
+  # Used http://stackoverflow.com/questions/25490308/ruby-on-rails-two-different-edit-pages-and-forms-how-to for help
+  def change_password
+>>>>>>> 44f589ee49e01767666da64318e3bc45c9ccf48d
     teacher = current_teacher
-    # also in here i'm calling the authenticate method that usually is present in bcrypt.
     if teacher and teacher.authenticate(params[:old_password])
       if params[:password] == params[:password_confirmation]
         teacher.password = BCrypt::Password.create(params[:password])
@@ -123,7 +147,6 @@ class TeachersController < ApplicationController
         @session = Session.new
         @session.session_teacher = @teacher.id
         @session.session_student = params[:student_id]
-        @session.start_time = Time.now
         respond_to do |format|
           if @session.save
             format.html { redirect_to @session, notice: 'Session was successfully created.' }
@@ -134,7 +157,7 @@ class TeachersController < ApplicationController
           end
         end
     elsif params[:analyze]
-        redirect_to analysis_path
+        redirect_to analysis_student_path(params[:student_id])
     end
   end
   
@@ -177,7 +200,7 @@ class TeachersController < ApplicationController
     def teacher_params
       params.require(:teacher).permit(:user_name, :last_login,
       :full_name, :screen_name, :icon, :color, :email, :description, :powers, 
-      :school_id, :password, :password_confirmation)
+      :school_id, :password, :password_confirmation, :suspended)
     end
     
     #Can only access teachers and info from the same school
