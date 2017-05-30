@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
     @squares = @student.squares
     @square_type = @squares
     
+    
   end
 
   # GET /sessions/1
