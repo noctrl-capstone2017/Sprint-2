@@ -4,18 +4,10 @@ class TeachersController < ApplicationController
   
   include TeachersHelper
   #Before actions to reduce access and prime pages to show teacher info.
-<<<<<<< HEAD
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
   before_action :same_school, only: [:show, :edit, :update, :destroy]
   before_action :is_admin, except: [:home, :update, :edit, :edit_password, :update_password]
   before_action :is_super, except: [:home, :update, :edit, :edit_password, :update_password]
-=======
-  before_action :set_teacher, only: [:show, :edit, :update]
-  before_action :same_school, only: [:show, :edit, :update]
-  #Guards added by Meagan Moore
-  before_action :is_admin, only: [:admin, :admin_report, :index, :new, :create, :login_settings, :show]
-  before_action :is_super, only: [:super, :updateFocus]
->>>>>>> 6c3e4c80996a9ffe6cc4dd41c7d70e355690ad26
 
   # GET /teachers
   # This method prepares the index view. It sets up pagination in an ascending
@@ -89,7 +81,6 @@ class TeachersController < ApplicationController
   #utilized http://stackoverflow.com/questions/25490308/ruby-on-rails-two-different-edit-pages-and-forms-how-to for help
   def edit_password
     @teacher = current_teacher
-<<<<<<< HEAD
   end
   
   #utilized http://stackoverflow.com/questions/25490308/ruby-on-rails-two-different-edit-pages-and-forms-how-to for help
@@ -108,9 +99,6 @@ class TeachersController < ApplicationController
     else
       redirect_to @teacher, :flash => { :danger => "Incorrect Password." }
     end
-=======
-    params[:id] = @teacher.id
->>>>>>> 6c3e4c80996a9ffe6cc4dd41c7d70e355690ad26
   end
 
   # POST /teachers
@@ -178,10 +166,6 @@ class TeachersController < ApplicationController
   def change_login_settings
     respond_to do |format|
       if @teacher.update(teacher_params)
-<<<<<<< HEAD
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
-        format.json { render :show, status: :ok, location: @teacher }
-=======
         format.html { redirect_to edit_teacher_path(@teacher.id), :flash => { :notice => 'Login settings for this teacher were successully updated.' } }
       else
         format.html { render :login_settings }
@@ -200,7 +184,6 @@ class TeachersController < ApplicationController
         if teacher.save!
           redirect_to edit_teacher_path(teacher), :flash => { :notice => "Password changed." }
         end
->>>>>>> 6c3e4c80996a9ffe6cc4dd41c7d70e355690ad26
       else
         redirect_to edit_password_teacher_path, :flash => { :error => "New password and confirmation didn't match." }
       end
