@@ -6,6 +6,7 @@ require 'test_helper'
 class SessionNotesControllerTest < ActionDispatch::IntegrationTest
   
   setup do
+    log_in_as(teachers(:one)) 
     @session_note = session_notes(:one)
   end
 
@@ -21,7 +22,7 @@ class SessionNotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create session_note" do
     assert_difference('SessionNote.count') do
-      post session_notes_url, params: { session_note: { note: 'fsdfsdfsdf', session_id: '10' } }
+      post session_notes_url, params: { session_note: { note: 'This is a test note', session_id: 200 } }
     end
     assert_redirected_to session_note_url(SessionNote.last)
   end

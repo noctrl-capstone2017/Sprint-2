@@ -4,7 +4,7 @@ class SessionNotesController < ApplicationController
   # GET /session_notes
   # GET /session_notes.json
   def index
-    @session_notes = SessionNote.all
+    #@session_notes = SessionNote.all
     @session_notes = SessionNote.search(params[:search]).paginate(:per_page => 10, :page => params[:page] )
   end
 
