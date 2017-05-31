@@ -3,7 +3,7 @@
    <div class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 content-col">
       <div class="page-header vertical-align">
          <div class="col-xs-11">
-            <h2>End of Behavior Session with <%= @student.full_name %> </h2>
+            <h2>End of Behavior Session with <%= @student.screen_name%> </h2>
             <!-- Dynamically fills in with user's name -->
          </div>
          <div class="col-xs-1">
@@ -44,7 +44,7 @@
                         <% end %>
                         <% if square.tracking_type == 1 %> <!-- Duration-->
                         <label>Duration</label>
-                        <td><%=getDuration(square)%></td><!--Get duration and add data to table -->
+                        <td><%=formatTime(getDuration(square))%></td><!--Get duration and add data to table -->
                         <%end%>
                      </td>
                   </tr>

@@ -1,18 +1,16 @@
 # Authors Alexander Pavia + Matthew O + Debra J
 module SessionsHelper
 
+#Calculates session duration from start and end times
   def calculateDuration
     @session = Session.find(params[:id])
-    start = @session.start_time
-    endt = @session.end_time
-  
-    #endt= Endt.find(@session.end_time)
-    #duration = @session.end_time - @session.start_time
+    start = Time.at(@session.start_time)
+    endt = Time.at(@session.end_time)
     duration = endt - start
-    duration = Time.at(duration).utc.strftime("%H:%M")
-    return duration
+   
+   return formatTime(duration)
   end
-  
+
   # Authors Alexander Pavia + Matthew O + Debra J
   #If the square tracking type is an interval
   #insert yes if the student had behavior in the interval time 
@@ -34,8 +32,8 @@ module SessionsHelper
   #display the number of times square was pressed 
   #count where the session_id = the session_id and behavior_sq = behavior_sq
   def getFrequency(square)
-    
     @session = Session.find(params[:id])
+    
     #should just be the total number of session events for a certain square for that session
     @frequency = SessionEvent.where(session_id: @session.id, behavior_square_id: square.id).count
   
@@ -43,6 +41,7 @@ module SessionsHelper
   end # end isFrequency
   
   #@author Alex P + Matthew O + Debra J
+  #gets the duration 
   def getDuration(square)
    
     @session = Session.find(params[:id])
@@ -52,14 +51,28 @@ module SessionsHelper
     
     #get the session Events for the square
     @sessionEvent.each do |event|
-     
-     eventDuration = (event.duration_end_time - event.square_press_time)
+     start = Time.at(event.square_press_time)
+     endt = Time.at(event.duration_end_time)
+     eventDuration= endt - start
      totalDuration += eventDuration 
     end
-    totalDuration = (totalDuration/60.0)
-    totalDuration = totalDuration.to_d
-    
+   
     return totalDuration
   end # end method
 
 end # end class 
+
+ #@author Alex P + Matthew O + Debra J
+ #formats the time
+def formatTime(duration)
+  #see if duration is at least a minute, if so format as minutes
+   #else format as seconds
+    if duration >= 60
+        #show duration as minutes
+      durationStr = Time.at(duration).utc.strftime("%-M:%S") + " minutes"
+    else
+      durationStr = durationStr = Time.at(duration).utc.strftime("%-S") + " seconds"
+    end
+
+    return durationStr
+end
