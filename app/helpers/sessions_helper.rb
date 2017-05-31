@@ -13,16 +13,16 @@ module SessionsHelper
     return duration
   end
   
+  # Authors Alexander Pavia + Matthew O + Debra J
   #If the square tracking type is an interval
   #insert yes if the student had behavior in the interval time 
   #Else insert no if the student did not have behavior in interval time
-  #This method is under construction!
   def getInterval(square)
     @session = Session.find(params[:id])
     @student = Student.find(@session.session_student)
     @sessionEvent = SessionEvent.where(session_id: @session.id, behavior_square_id: square.id)
     answer = "No"
-    if  @sessionEvent.length > 0
+    if  @sessionEvent.length >= 1
       
       return answer = "Yes"
     end
@@ -30,6 +30,7 @@ module SessionsHelper
     return answer
   end # end isInterval
   
+  # Authors Alexander Pavia + Matthew O + Debra J
   #display the number of times square was pressed 
   #count where the session_id = the session_id and behavior_sq = behavior_sq
   def getFrequency(square)
